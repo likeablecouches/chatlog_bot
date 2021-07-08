@@ -1,2 +1,14 @@
 -put git repo online
--read https://pythondiscord.com/pages/guides/python-guides/discordpy/
+
+-learn python classes
+learn how to use cogs
+  -read https://discordpy.readthedocs.io/en/stable/ext/commands/cogs.html
+  -watch https://www.youtube.com/watch?v=vQw8cFfZPx0
+
+commands:
+  log [channel_id/name, filename, mesg_num, ]
+    (logs {mesg_num} messages of {channel_id/name} into {filename}. if filename
+    not specified, use channel name. if mesg_num not specified, log all messages.
+
+  mesgnum [channel_id/name]
+    (returns number of messsages in {channel_id/name}
