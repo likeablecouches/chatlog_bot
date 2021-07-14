@@ -1,14 +1,16 @@
 -put git repo online
 
--learn python classes
-learn how to use cogs
-  -read https://discordpy.readthedocs.io/en/stable/ext/commands/cogs.html
-  -watch https://www.youtube.com/watch?v=vQw8cFfZPx0
-
 commands:
-  log [channel_id/name, filename, mesg_num, ]
-    (logs {mesg_num} messages of {channel_id/name} into {filename}. if filename
-    not specified, use channel name. if mesg_num not specified, log all messages.
+  logchannel [channel_id, percentage, filename,]
+    (logs {percnetage}% of messages of {channel_id/name} into {filename}. if filename
+    not specified, use channel name. if mesg_num not specified, log all messages.)
 
-  mesgnum [channel_id/name]
+  logserver [server_id, index]
+    (logs {index} chats of {server_id}. if index not specified, log all channels.)
+
+  count [channel_id/server_id]
     (returns number of messsages in {channel_id/name}
+
+ideas:
+  partitioning feature:
+    split logs of a channel to multiple files

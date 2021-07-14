@@ -1,22 +1,28 @@
 import discord
 from discord.ext import commands
 
+import os
+
 bot = commands.Bot(command_prefix = '.chatlog ')
 
-@bot.event
-async def on_ready():
-    print('{0.user} is ready'.format(bot))
+# cogs
 
-# test command
 @bot.command()
-async def makefile(ctx, name, text):
-    with open(f'./user_files/{name}', 'w+') as user_file:
-        user_file.write(text)
+async def load(ctx, extension):
+    bot.load_extension(f'cogs.{extension}')
 
-    with open(f'./user_files/{name}', 'r') as user_file:
-        await ctx.send(file=discord.File(fp=user_file, filename=name))
+@bot.command()
+async def unload(ctx, extension):
+    bot.unload_extension(f'cogs.{extension}')
 
-# v load cogs below v
+@bot.command()
+async def reload(ctx, extension):
+    bot.unload_extension(f'cogs.{extension}')
+    bot.load_extension(f'cogs.{extension}')
 
-bot.run('ODYxOTQ4MDE4MTM5MjAxNTM2.YORNpQ.RiWo4OmodIypYegJUAL9iAahICQ')
-        # ^ REMOVE TOKEN BEFORE COMMITING! ^
+for filename in os.listdir('./cogs'):
+    if filename.endswith('.py'):
+        bot.load_extension(f'cogs.{filename[:-3]}')
+
+bot.run('')
+       # ^ REMOVE TOKEN BEFORE COMMITING!
